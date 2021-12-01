@@ -48,14 +48,16 @@
                     </form>
                 </div>
             </nav>
-            <div class="container gedf-wrapper my-4">
-                    <div class="row">
+                    
+    
+            {# <div class="container gedf-wrapper my-4"> #}
+                    {% block body %}
+                    {% endblock %}
+                    {# <div class="row">
                         <div class="col-md-12 gedf-main">
-                        {% block body %}
-                        {% endblock %}
                         </div>
-                    </div>
-            </div>
+                    </div> #}
+           {#  </div> #}
         </main>
         <footer class="footer mt-auto py-3 bg-light">
             <div class="container text-center">
