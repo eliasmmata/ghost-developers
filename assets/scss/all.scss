@@ -6,8 +6,12 @@
 .form-signin {
     width: 100%;
     width: 40vw;
-    height: 50vh;
+    min-height: 70vh;
     margin: 5vh auto !important;
+    background:#dad5cd; 
+    border: 1px solid #dad5cd; 
+    border-radius:3px; 
+    padding: 50px;
   }
 
   .form-signin .checkbox {
