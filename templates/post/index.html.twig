@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="border border-grey rounded pt-2">
+        <ul class="nav nav-tabs">
+        <li class="nav-item border border-bottom-grey">
+            <a class="nav-link active" href="#">Make Your Statement. We hear you.</a>
+            {# <a class="nav-link-active" id="posts-tab" data-toggle="tab" href="#posts" role="tab"
+                            aria-controls="posts" aria-selected="true">
+                            Make Your Statement. We hear you.
+            </a> #}
+        </li>
+        </ul>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" role="tabpanel" aria-labelledly="posts-tab">
+                    {{ form_start(form)}}
+                        <div class="form-group">
+                            {{ form_widget(form.text, {'attr': {'class':'form-control'}}) }}
+                        </div>
+                        <div class="form-group mt-3">
+                            
+                            {{form_widget(form.save, {'attr':{'class':'btn btn-primary'}}) }}
+                        </div>
+                {{form_end(form)}}
+                </div>
+            </div>
+        </div>
+     </div>
+
+
+    {% for post in posts %}
+    <div class="card gedf-card my-4">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="mx-2">
+                        <img class="rounded-circle" data-src="holder.js/40x40?text=RA&bg=0d6efd&fg=fff&size=12" alt="">
+                    </div>
+                    <div class="mx-2">
+                        <div class="h5 m-0">@GhostDeveloper</div>
+                        <div class="h7 text-muted">Developer One</div>
+                    </div>
+                    <div>
+                        <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1"  
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledly="gedf-drop1">
+                                <div class="h6 dropdown-header">Configuration</div>
+                                <a class="dropdown-item" href="#">Save</a>
+                                <a class="dropdown-item" href="#">Hide</a>
+                                <a class="dropdown-item" href="#">Report</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="text-muted h7 mb-2"><i class="far fa-clock"></i> {{post.time | date('Y/m/d')}}</div>
+                    <p class="card-text">
+                        {{post.text}}
+                        Post Dinámico
+                    </p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="card-link"><i class="fas fa-heart"></i></i> Like </a>
+                <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment </a>
+                <a href="#" class="card-link"><i class="fas fa-share"></i> Share </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

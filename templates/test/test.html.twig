@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test{% endblock %}
+
+ {% block stylesheets %}
+            {{ encore_entry_link_tags('test') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('test') }}
+        {% endblock %}
+
+{% block body %}
+
+<h1> Test </h1>
+
+{% endblock body %}
