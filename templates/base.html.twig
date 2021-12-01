@@ -64,7 +64,9 @@
                             <a class="nav-link dropdown-toggle" href="#"
                             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ app.user.alias }}
-                            User
+                            {% if app.user != app.user %}
+                            Log In
+                            {% endif  %}
                             </a>
                             <ul class="drowpdown-menu dropdown-menu dropdown-menu-end text-center mt-2" style="right: 0; left: auto;">
                                 <li><a style="display:none" class="dropdown-item" href="{{ path('app_logout') }}"></a>Log Out</li>
