@@ -13,6 +13,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
 
+/**
+ * @Route("/secret")
+ */
+
 class SecretController extends AbstractController
 {
     public function __construct(SecretRepository $secretRepository,
@@ -41,7 +45,7 @@ class SecretController extends AbstractController
             $this->entityManager->flush();
 
             return new RedirectResponse(
-                $this->router->generate('secret_index')
+                $this->router->generate('/secret')
             );
         }
         /* return $this->render(view: "secret/index.html.twig", [
@@ -78,7 +82,7 @@ class SecretController extends AbstractController
             $this->entityManager->flush();
 
             return new RedirectResponse(
-                $this->router->generate('secret_index')
+                $this->router->generate('/secret/')
             );
         }
         return $this-> render('secret/secretDetail/edit.html.twig', [
