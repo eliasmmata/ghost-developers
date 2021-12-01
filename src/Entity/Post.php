@@ -19,6 +19,8 @@ class Post
    
     /*
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min=10)
      */
     private $text;
 

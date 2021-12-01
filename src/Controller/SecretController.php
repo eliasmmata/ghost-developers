@@ -84,7 +84,20 @@ class SecretController extends AbstractController
         return $this-> render('secret/secretDetail/edit.html.twig', [
             "form" => $form->createView(),
         ]);
+    }
+    /**
+     * @Route("/delete/{id}", name="delete_secret")
+     */
+    public function delete(Secret $secret)
+    {
+        $this->entityManager->remove($secret);
+        $this->entityManager->flush();
 
+        $this->addFlash('info', 'Deleted succesfully 🤫');
+
+        return new RedirectResponse(
+            $this->router->generate('secret_index')
+        );
     }
 }
 
