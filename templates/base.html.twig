@@ -28,24 +28,50 @@
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="https://github.com/eliasmmata/eliasmmata/blob/main/README.md" target="_blank">
+                        <i class="fab fa-github"></i>
+                        My Github</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        <i class="fas fa-ghost"></i>
+                        About me
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a style="display:flex;justify-content:space-between !important;align-items:center;" class="dropdown-item" href="https://eliasmmataportfolio.netlify.app/" target="_blank">
+                        Portfolio
+                        <i class="fas fa-briefcase"></i>
+                        </a>
+                        <a style="display:flex;justify-content:space-between !important;align-items:center;" class="dropdown-item" href="https://www.linkedin.com/in/pabloeliasmorenomata/" target="_blank">
+                        Linkedin
+                        <i class="fab fa-linkedin-in"></i>
+                        </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a style="display:flex;justify-content:space-between !important;align-items:center;" class="dropdown-item" href="https://www.instagram.com/eliasmmata/" target="_blank">
+                        Instragram
+                        <i class="fab fa-instagram"></i>
+                        </a>
                         </div>
                     </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
+                    <form class="form-inline my-2 mr-4 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
+                    {% if app.user %}
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ app.user.alias }}
+                            User
+                            </a>
+                            <ul class="drowpdown-menu dropdown-menu dropdown-menu-end text-center mt-2" style="right: 0; left: auto;">
+                                <li><a style="display:none" class="dropdown-item" href="{{ path('app_logout') }}"></a>Log Out</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    {% endif %}
                 </div>
             </nav>
             <div class="container gedf-wrapper my-4">
@@ -60,7 +86,8 @@
         </main>
         <footer class="footer mt-auto py-3 bg-light">
             <div class="container text-center">
-                <span class="text-muted"> Ghost Social Network - Powered by Symfony. </span>
+                <p style="margin:0;padding:0;" class="text-muted"> - Ghost Social Network- </p>
+                <span style="font-size:0.75rem; margin:0;padding:0;" class="text-muted"> (Powered by Symfony - Developed By @eliasmmata) </span>
             </div>
         </footer>
     </body>

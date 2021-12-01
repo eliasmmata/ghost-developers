@@ -45,7 +45,7 @@ class SecretController extends AbstractController
             $this->entityManager->flush();
 
             return new RedirectResponse(
-                $this->router->generate('/secret')
+                $this->router->generate('secret_index')
             );
         }
         /* return $this->render(view: "secret/index.html.twig", [
@@ -82,7 +82,7 @@ class SecretController extends AbstractController
             $this->entityManager->flush();
 
             return new RedirectResponse(
-                $this->router->generate('/secret/')
+                $this->router->generate('secret_index')
             );
         }
         return $this-> render('secret/secretDetail/edit.html.twig', [
