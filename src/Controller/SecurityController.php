@@ -26,12 +26,15 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
     
-
     /**
-     * @Route("/logout", name="app_logout")
+     * @Route("/logout", name="app_logout", methods={"GET"})
      */
     public function logout(): void
     {
+
+        // QUIZÄ REDIRECCION PARA CUANDO HAYA LOG OUT
+        // return $this->redirectToRoute('target_path');
+        
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 }

@@ -7,7 +7,7 @@
     {% if app.user %}
     <div class="mb-3">
         You are logged in as {{app.user.alias}},
-        <a href="{{ path('app_logout') }}">Log Out</a>
+        <a href="{{ path('/logout') }}">Log Out</a>
     </div>
     {% endif %}
 
@@ -35,3 +35,22 @@
 </form>
 
 {% endblock %}
+
+
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.alias) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+{% endblock %} #}
