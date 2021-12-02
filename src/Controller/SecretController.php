@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/secret")
@@ -41,8 +42,12 @@ class SecretController extends AbstractController
         $form -> handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            $secret->setUser($user);
+
             $this->entityManager->persist($secret);
             $this->entityManager->flush();
+
 
             return new RedirectResponse(
                 $this->router->generate('secret_index')

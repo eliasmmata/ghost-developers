@@ -6,6 +6,7 @@
 @import 'base/menu';
 @import 'base/form';
 @import 'base/secret';
+@import 'base/mediaqueries';
 
 
 .form-control:focus {
@@ -24,4 +25,8 @@
 h3 {
   text-shadow: 1px 2px 3px rgba(17,29,19,0.5);
   
+}
+
+#registration_form_alias {
+  height: calc(1.5em + 0.75rem + 2px) !important;
 }
