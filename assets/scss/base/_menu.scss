@@ -1,0 +1,20 @@
+.navbar {
+    background: #111d13!important;
+    color: #a1cca5 !important;
+    & .nav-link {
+        color: #a1cca5 !important;
+    }
+    .btn:not(:disabled):not(.disabled) {
+        color: #a1cca5  !important;
+        border-color: #a1cca5 !important;
+        &:hover {
+            background: #a1cca5;
+            box-shadow: 0 0 0 1px rgba(17, 29, 19, 0.25);
+            color:#111d13!important;
+        }
+    }
+}
+.footer {
+    background: #8fb996 !important;
+    color: #111d13;
+}

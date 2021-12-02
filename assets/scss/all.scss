@@ -3,34 +3,20 @@
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
+@import 'base/menu';
+@import 'base/form';
+@import 'base/secret';
 
-.form-signin {
-    width: 100%;
-    width: 40vw;
-    min-height: 70vh;
-    margin: 5vh auto !important;
-    background:#dad5cd; 
-    border: 1px solid #dad5cd; 
-    border-radius:3px; 
-    padding: 50px;
-  }
 
-  .form-signin .checkbox {
-    font-weight: 400;
-  }
-  
-  .form-signin .form-floating:focus-within {
-    z-index: 2;
-  }
-  
-  .form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  
-  .form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
+.form-control:focus {
+  color: #111d13;
+  border-color: #a1cca5;
+  box-shadow: 0 0 0 0.2rem rgba(161, 204, 165, 0.25);
+}
+.btn-primary:focus {
+  border-color: none !important;
+  box-shadow: 0 0 0 0.2rem rgba(161, 204, 165, 0.25);
+}
+.btn:hover, a:hover {
+  filter: brightness(125%);
+}

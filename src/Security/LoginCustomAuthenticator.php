@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,8 +16,10 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
+
 class LoginCustomAuthenticator extends AbstractLoginFormAuthenticator
 {
+   
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_login';
@@ -42,6 +45,13 @@ class LoginCustomAuthenticator extends AbstractLoginFormAuthenticator
             ]
         );
     }
+
+    public function checkCredentials($credentials, User $user)
+{
+    var_dump($credentials['password']);
+    $encoder = $this->container->get('security.password_encoder');
+    return $encoder->isPasswordValid($user, $credentials['password']);
+}
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {

@@ -69,7 +69,9 @@
                             {% endif  %}
                             </a>
                             <ul class="drowpdown-menu dropdown-menu dropdown-menu-end text-center mt-2" style="right: 0; left: auto;">
-                                <li><a style="display:none" class="dropdown-item" href="{{ path('app_logout') }}"></a>Log Out</li>
+                            {% if app.user != null %}
+                                <a class="dropdown-item" href="{{ path('app_logout') }}"><li>Log Out</li></a>
+                            {% endif  %}
                             </ul>
                         </li>
                     </ul>
@@ -80,7 +82,7 @@
             <h3 style="margin-bottom: -1rem !important;" class="text-center">or simply de-stress anonymously!</h3>
             <div class="container gedf-wrapper my-4">
                 <div class="row">
-                    <div class="col-md-12 gedf-main">
+                    <div id="secret-detail" class="col-md-12 gedf-main">
                         {% block body %}
                         {% endblock %}
                     </div>

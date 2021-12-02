@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Welcome to Ghost Developers{% endblock %}
+{% block title %}Log in Ghost Developers{% endblock %}
 
 {% block body %}
-  <form class="form-signin" method="post">
+                          {# SI DESCOMENTO ACTION VA PERO NO SE LOGUEA #}
+  <form class="form-signin" {# action="{{ path('secret_index') }}" #} method="post"}>
+    {# {% if app.user != null %}
+    {{dump(app.user)}}
+    {% endif %} #}
     {% if app.user %}
-    <div class="mb-3">
+    <div class="mb-3 text-center">
         You are logged in as {{app.user.alias}},
         <a href="{{ path('app_logout') }}">Log Out</a>
     </div>
@@ -18,20 +22,30 @@
     <div class="form-floating mb-2">
       <input type="text" value="{{last_username}}" name="alias" required autofocus class="form-control" id="floatingInput" placeholder="Choose an alias">
     </div>
+    {%if app.user == null %}
+
+    {% endif %}
     {% if error %}
+    {{  dump(error) }}
     <div class="alert alert-danger">{{error.messageKey|trans(error.messageData, 'security')}}></div>
     {% endif %}
     <div class="form-floating mb-2">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password" autocomplete="current-password" required>
       <input type="hidden" name="_csrf_token" value="{{csrf_token('authenticate')}}">
     </div>
 
     <div class="checkbox mb-3">
       <label class="mt-2 mb-0">
-        <input type="checkbox" value="remember-me"> Remember me
+        <input class="inputCheck" type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
+    <button style="width:49%;" class="btn btn-lg btn-primary" type="submit" name="login">Log in</button>
+    {# <button style="width:49%;" class="btn btn-lg btn-info" type="button"> #}
+      <a class="btn btn-lg btn-info" style="width: 49%;text-decoration:none;" href="/register">Register</a>
+    {# </button> #}
+    {% if app.user %}
+    {# <input type="hidden" name="_target_path" value="{{ path('/secret/') }}"/> #}
+    {% endif %}
 </form>
 
 {% endblock %}
