@@ -26,7 +26,7 @@
 
     {% endif %}
     {% if error %}
-    {{  dump(error) }}
+    {# {{  dump(error) }} #}
     <div class="alert alert-danger">{{error.messageKey|trans(error.messageData, 'security')}}></div>
     {% endif %}
     <div class="form-floating mb-2">
