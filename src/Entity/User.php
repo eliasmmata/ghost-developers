@@ -82,17 +82,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->alias;
     }
-
-    public function getUsername(): string {
-        return $this->alias;
-    }
-
-    public function setUsername(string $alias): self {
-        $this->alias = $alias;
-
-        return $this;
-    }
-
     /**
      * @see PasswordAuthenticatedUserInterface
      */
@@ -111,19 +100,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
-    public function getSalt()
-    {
-        // not need when using bcrypt in security.yaml
-    }
-
-    /**
-     * @see UserInterface
-     */
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-        return null;
     }
 
     public function getImage(): ?string
