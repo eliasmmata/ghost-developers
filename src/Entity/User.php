@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -55,6 +57,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Secret::class, mappedBy="user")
+     */
+    private $secrets;
+
+    public function __construct()
+    {
+        $this->secrets = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -114,6 +126,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Secret[]
+     */
+    public function getSecrets(): Collection
+    {
+        return $this->secrets;
+    }
+
+    public function addSecret(Secret $secret): self
+    {
+        if (!$this->secrets->contains($secret)) {
+            $this->secrets[] = $secret;
+            $secret->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSecret(Secret $secret): self
+    {
+        if ($this->secrets->removeElement($secret)) {
+            // set the owning side to null (unless already changed)
+            if ($secret->getUser() === $this) {
+                $secret->setUser(null);
+            }
+        }
 
         return $this;
     }
