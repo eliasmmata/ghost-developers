@@ -44,12 +44,20 @@ class SecretController extends AbstractController
         $form -> handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            
-            $user = $this->getUser();
+
+            // MANERA QUE TAMBIEN FUNCIONA
+            /* $user = $this->getUser();
             $secret->setUser($user);
+            $this->entityManager->persist($secret);
+            $this->entityManager->flush(); */
+
+            $secret = $form->getData();
+            $user = $this->getUser();
             
+            $secret->setUser($user);
             $this->entityManager->persist($secret);
             $this->entityManager->flush();
+
 
 
             return new RedirectResponse(

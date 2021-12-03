@@ -76,4 +76,13 @@ class Secret
 
         return $this;
     }
+
+    // prueba!
+    /* public function setIdUser(?User $idUser): self
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    } */
+
 }
