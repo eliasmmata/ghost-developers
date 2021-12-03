@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Secret;
+use App\Entity\User;
 use App\Form\SecretType;
 use App\Repository\SecretRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -33,7 +35,7 @@ class SecretController extends AbstractController
     /**
      * @Route("/", name="secret_index")
      */
-    public function secret(Request $request)
+    public function createSecret(Request $request)
     {
         $secret = new Secret();
         $secret -> setTime(new \DateTime());
@@ -42,9 +44,10 @@ class SecretController extends AbstractController
         $form -> handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            
             $user = $this->getUser();
             $secret->setUser($user);
-
+            
             $this->entityManager->persist($secret);
             $this->entityManager->flush();
 
