@@ -24,6 +24,13 @@
     background: #8fb996 !important;
 }
 .footer {
-    background: #8fb996 !important;
-    color: #111d13;
+    background: #111d13 !important;
+    padding: 0.5rem;
+    & p  {
+        color: #a1cca5 !important;
+        margin: 0 0 0.25rem 0;
+    }
+    & a {
+        color: #a1cca5;
+    }
 }

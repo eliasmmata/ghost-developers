@@ -3,18 +3,14 @@
 {% block title %}Log in Ghost Developers{% endblock %}
 
 {% block body %}
-                          {# SI DESCOMENTO ACTION VA PERO NO SE LOGUEA #}
-  <form class="form-signin" {# action="{{ path('secret_index') }}" #} method="post"}>
-    {# {% if app.user != null %}
-    {{dump(app.user)}}
-    {% endif %} #}
-    {% if app.user %}
-    <div class="mb-3 text-center">
-        You are logged in as {{app.user.alias}},
-        <a href="{{ path('app_logout') }}">Log Out</a>
-    </div>
+                    
+  <form class="form-signin" method="post"}>
+  {% if app.user %}
+      <div class="mb-3 text-center">
+          <p>You are logged in as {{app.user.alias}}, <a href="{{ path('app_logout') }}">Log Out</a></p>
+          <a>Go to HomePage</a>
+      </div>
     {% endif %}
-
     <img class="rounded mx-auto d-block" src="{{ asset('build/images/favicon.jpeg') }}"  alt="logo" width="100" height="100">
     <h2 class="h3 fw-normal">Sharing is caring</h2>
     <h1 class="h4">Sign in to tell your developer secrets</h1>
@@ -22,11 +18,8 @@
     <div class="form-floating mb-2">
       <input type="text" value="{{last_username}}" name="alias" required autofocus class="form-control" id="floatingInput" placeholder="Choose an alias">
     </div>
-    {%if app.user == null %}
-
-    {% endif %}
+    
     {% if error %}
-    {# {{  dump(error) }} #}
     <div class="alert alert-danger">{{error.messageKey|trans(error.messageData, 'security')}}></div>
     {% endif %}
     <div class="form-floating mb-2">

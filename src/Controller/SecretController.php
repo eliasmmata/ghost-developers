@@ -78,11 +78,8 @@ class SecretController extends AbstractController
      */
     public function show(Secret $secret)
     {
-        // en vez de $id como parametro arriba 
-        // $secret = $this->secretRepository->find($id);
-
         return $this->render('secret/secretDetail/detail.html.twig', [
-            'secret' => $secret
+            'secret' => $secret,
         ]);
     }
     /**
